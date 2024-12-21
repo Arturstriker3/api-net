@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\API .NET CRUD Minimal E.F ORM.props" />
+</Project>

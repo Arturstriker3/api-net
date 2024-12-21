@@ -1,0 +1,6 @@
+@API_.NET_CRUD_Minimal_E.F_ORM_HostAddress = http://localhost:5049
+
+GET {{API_.NET_CRUD_Minimal_E.F_ORM_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,65 @@
+﻿API.NET CRUD Minimal E.F ORM
+
+Estrutura do projeto:
+
+├── Controllers/     
+│   -> Responsáveis por controlar a lógica das APIs e definir os endpoints.
+│   -> Seguem o padrão MVC (Model-View-Controller), onde os controllers conectam o frontend ou consumidores externos ao backend.
+│   -> Exemplos: `StudentController.cs`, `AuthController.cs`.
+
+├── Models/          
+│   -> Contém as classes que representam as entidades do domínio do sistema.
+│   -> Utilizadas para definir a estrutura de tabelas no banco de dados ao trabalhar com Entity Framework.
+│   -> Exemplos: `Student.cs`, `Course.cs`.
+
+├── Data/            
+│   -> Contém o contexto do Entity Framework Core, que gerencia a conexão com o banco de dados e mapeia os modelos.
+│   -> Define DbSets para representar tabelas no banco.
+│   -> Exemplos: `AppDbContext.cs`.
+
+├── Repositories/    
+│   -> Implementam o padrão Repository, que encapsula a lógica de acesso a dados.
+│   -> Tornam o código mais limpo, reutilizável e desacoplado.
+│   -> Normalmente possuem interfaces (`IRepository`) e implementações concretas (`Repository`).
+│   -> Exemplos: `StudentRepository.cs`, `GenericRepository.cs`.
+
+├── Services/        
+│   -> Lidam com as regras de negócio, centralizando a lógica de operações que o sistema precisa realizar.
+│   -> Seguem o padrão Service Layer, separando a lógica de negócios dos controllers.
+│   -> Exemplos: `StudentService.cs`, `AuthService.cs`.
+
+├── DTOs/            
+│   -> Data Transfer Objects são utilizados para transferir dados entre camadas de forma estruturada e segura.
+│   -> Evitam expor diretamente os modelos do banco de dados nas respostas da API.
+│   -> Exemplos: `StudentDTO.cs`, `AuthResponseDTO.cs`.
+
+Padrões adotados no projeto:
+
+1. **MVC (Model-View-Controller)**  
+   - Separação de responsabilidades entre Models, Views e Controllers.
+   - Facilita a manutenção e compreensão do código.
+
+2. **Repository Pattern**  
+   - Cria uma camada intermediária para acesso ao banco de dados.  
+   - Abstrai consultas e comandos SQL, promovendo reuso e independência do banco de dados.
+
+3. **Service Layer**  
+   - Introduz uma camada de serviços para centralizar a lógica de negócios, evitando que os controllers fiquem sobrecarregados.
+
+4. **DTO (Data Transfer Object)**  
+   - Ajuda a estruturar as respostas da API, fornecendo apenas os dados necessários.  
+   - Melhora a segurança ao evitar a exposição de dados sensíveis ou desnecessários.
+
+5. **Dependency Injection (DI)**  
+   - Utiliza o contêiner de injeção de dependência do .NET para gerenciar objetos, como contextos de banco, repositórios e serviços.  
+   - Melhora a testabilidade e reduz o acoplamento.
+
+6. **EF Core (Entity Framework Core)**  
+   - ORM (Object-Relational Mapping) usado para manipular o banco de dados através de objetos .NET, evitando consultas SQL complexas.  
+   - Trabalha com migrações para versionar o esquema do banco.
+
+7. **Migration**  
+   - Utiliza migrações do Entity Framework Core para gerenciar alterações no esquema do banco de dados.  
+   - Facilita a evolução do banco de dados ao longo do tempo.
+   - dotnet ef migrations add InitialCreate
+   - dotnet ef database update
